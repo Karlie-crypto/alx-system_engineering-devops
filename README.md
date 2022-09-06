@@ -1,1 +1,1 @@
-My shell permission
+shell vriables expansions
