@@ -1,0 +1,2 @@
+shell_variables_expansions >README.md 
+echo shell_variables_expansions
