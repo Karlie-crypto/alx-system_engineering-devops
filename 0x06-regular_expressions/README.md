@@ -1,4 +1,10 @@
+PROJECT NAME
 # 0x06. Regular expression
+
+AUTHOR DETAILS:
+Karlie Moyo
+
+PROJECT DESCRIPTION:
 
 | TASK | FILE                                                             | DESCRIPTION |
 | ---- | ---------------------------------------------------------------- | ----------- |
