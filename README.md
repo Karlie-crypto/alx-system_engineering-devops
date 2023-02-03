@@ -13,7 +13,7 @@ This repository contains programs created for the _**ALX Software Engineering** 
 - [command_line_for_the_win](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/command_line_for_the_win)
 - [0-iam_betty](https://github.com/Karlie-crypto/alx-system_engineering-devops/blob/master/0-iam_betty)
 - [0x05-processes_and_signals](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/0x05-processes_and_signals)
-I- [0x06-regular_expressions](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/0x06-regular_expressions)
+- [0x06-regular_expressions](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/0x06-regular_expressions)
 - [0x07-networking_basics](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/0x07-networking_basics)
 - [0x08-networking_basics_2](https://github.com/Karlie-crypto/alx-system_engineering-devops/tree/master/0x08-networking_basics_2)
 
