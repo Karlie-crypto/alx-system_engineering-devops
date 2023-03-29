@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# installs nginx and configures it on a remote server
+
+# Update the package list and install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# Create a custom index.html file with "Hello World!" message
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart nginx
+service nginx restart
