@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Script that configures a new Ubuntu machine to respect above requirements
+# Configure Nginx server so that /redirect_me is redirecting to another page.
+# But the main domain still shows Hello world
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-
-echo "Hello World!" | sudo tee /var/www/html/index.html
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.nchedookongwu.com permanent;"
-sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
-
-sudo service nginx restart
+apt-get update -y && apt-get upgrade -y
+apt-get install nginx -y
+chown -R "$USER":"$USER" /var/www/html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+line="\\\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+sed -i "48i $line" /etc/nginx/sites-available/default
+service nginx restart
