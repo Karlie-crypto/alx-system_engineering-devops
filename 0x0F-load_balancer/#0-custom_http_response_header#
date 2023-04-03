@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Configure Nginx so that it's HTTP response contains a custome header (on web-01 and web-02)
+# The name of the custom HTTP header must be X-Served-By
+# The value of the custom HTTP header must be the hostname of the server Nginx is running on
+sudo apt-get update
+sudo apt-get -y intall nginx
+
+# configure firewell to allow request through port 80
+sudo ufw allow 'Nginx HTTP'
+
+sudo mkdir -p /var/www/html
+
+#change permissions to allow us to easily create files in this directory
+sudo chmod -R 755 /var/www
+
+#create the index page
+echo 'Hello World!' |sudo tee /var/www/html/index.html
+
+#create a webpag for 404
+echo "Ceci n'est pas une page" |sudo tee /var/www/html/index.html
+
+# code to configure redirect for a single page(/redirect_me) and add header to display host name
+string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https://github.com/Karlie-crypto permanent; 
+
