@@ -1,5 +1,4 @@
 0x11. What happens when you type google.com in your browser and press Enter
 
 
-
-(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/298/aJPw3mw.jpg)
+![image](https://user-images.githubusercontent.com/110098940/231384230-42dddc7f-7968-4617-bcb2-08e198fa7b0e.png)
