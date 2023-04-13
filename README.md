@@ -5,8 +5,7 @@
 
 This repository contains programs created for the _**ALX Software Engineering** Programs._ Your girl here is ready for collaborations, Currently sharpening my knowledge and skills of C and shell scripting. Hey you! Come let's do hard things. The following is a specific list of projects :
 
-
-TABLE       PROJECT  NAME                                                                                                                                      | DESCRIPTION |
+| PR.NO | PROJECT                                                                                                                                                 | DESCRIPTION |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | 0x00  | [Shell, basics](./0x00-shell_basics/)                                                                                                                   |             |
 | 0x01  | [Shell, Permissions](./0x01-shell_permissions/)                                                                                                         |             |
@@ -27,6 +26,8 @@ TABLE       PROJECT  NAME                                                       
 | 0x10  | [HTTPS SSL](./0x10-https_ssl/)                                                                                                                          |             |
 | 0x11  | [What happens when you type google.com in your browser and press Enter](./0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/) |             |
 | N/A   | [Command line for the win](./command_line_for_the_win)                                                                                                  |             |
+| N/A   | [Attack is the best defense](attack_is_the_best_defense/)                                                                                               |             |
+
 
 ### AUTHOR:
 <details>
