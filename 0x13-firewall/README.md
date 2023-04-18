@@ -1,2 +1,2 @@
 0x13. Firewall
-https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/284/V1HjQ1Y.png
+![image](https://user-images.githubusercontent.com/110098940/232746203-62610865-f5e5-4e35-a0ee-ed8d2bcfe974.png)
