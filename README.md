@@ -1,4 +1,3 @@
-
 # ALX SYSTEM ENGINEERING - DEVOPS
 
 <img alt="coding" width="784" height="350" src="https://github.com/Karlie-crypto/alx-system_engineering-devops/blob/master/new.png" />
