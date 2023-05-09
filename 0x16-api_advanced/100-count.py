@@ -1,54 +1,86 @@
 #!/usr/bin/python3
-""" raddit api"""
-
-import json
+"""Advanced API module using reddit api endpoint"""
+from operator import itemgetter
 import requests
 
 
-def count_words(subreddit, word_list, after="", count=[]):
-    """count all words"""
+def recurse(subreddit, top_list=[]):
+    """Return list of title of the top posts in a subreddit."""
+    def recurse_post(lst, post_list, curr_idx):
+        """Recursively add all title to top_list."""
+        if curr_idx >= len(post_list):
+            return
+        title = post_list[curr_idx]['data']['title']
+        lst.append(title)
+        recurse_post(lst, post_list, curr_idx + 1)
 
-    if after == "":
-        count = [0] * len(word_list)
+    def get_post(limit, after, url, header, post_list):
+        """Recursively make request to reddit api(Handled its pagination)."""
+        if limit >= len(post_list):
+            return
+        url = '{}&after={}'.format(url, after)
+        response = requests.get(url, headers=header)
+        result = response.json()['data']
+        post_list = result['children']
+        after = result['after']
+        recurse_post(top_list, post_list, 0)
+        get_post(limit, after, url, header, post_list)
 
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    request = requests.get(url,
-                           params={'after': after},
-                           allow_redirects=False,
-                           headers={'user-agent': 'bhalut'})
+    header = {
+            'User-Agent': 'MyBot/1.0'
+            }
+    limit = 100
+    url = 'https://reddit.com/r/{}/top.json?limit={}'.format(subreddit, limit)
+    response = requests.get(url, headers=header)
+    if response.status_code == 200:
+        result = response.json()['data']
+        post_list = result['children']
+        after = result['after']
+        recurse_post(top_list, post_list, 0)
+        get_post(limit, after, url, header, post_list)
+        return top_list
+    else:
+        return None
 
-    if request.status_code == 200:
-        data = request.json()
 
-        for topic in (data['data']['children']):
-            for word in topic['data']['title'].split():
-                for i in range(len(word_list)):
-                    if word_list[i].lower() == word.lower():
-                        count[i] += 1
+def count_words(subreddit, words_list):
+    """Print stats of word_list in the hot topics in a subreddit."""
+    def count_word(word, title, t_curr_idx, count=0):
+        """Return the number appear of word in title."""
+        if t_curr_idx >= len(title):
+            return count
+        if word == title[t_curr_idx]:
+            count += 1
+        return count_word(word, title, t_curr_idx + 1, count)
 
-        after = data['data']['after']
-        if after is None:
-            save = []
-            for i in range(len(word_list)):
-                for j in range(i + 1, len(word_list)):
-                    if word_list[i].lower() == word_list[j].lower():
-                        save.append(j)
-                        count[i] += count[j]
+    def get_stats(word_list, w_curr_idx, title_list, t_curr_idx, stats):
+        """Recursively get the stats."""
+        if t_curr_idx == len(title_list) - 1:
+            t_curr_idx = 0
+            w_curr_idx += 1
+        if w_curr_idx >= len(word_list):
+            return
 
-            for i in range(len(word_list)):
-                for j in range(i, len(word_list)):
-                    if (count[j] > count[i] or
-                            (word_list[i] > word_list[j] and
-                             count[j] == count[i])):
-                        aux = count[i]
-                        count[i] = count[j]
-                        count[j] = aux
-                        aux = word_list[i]
-                        word_list[i] = word_list[j]
-                        word_list[j] = aux
+        word = word_list[w_curr_idx].lower()
+        title = title_list[t_curr_idx].lower()
+        count = count_word(word, title.split(), 0)
+        stats[word] = count + stats.get(word, 0)
+        get_stats(word_list, w_curr_idx, title_list, t_curr_idx + 1, stats)
 
-            for i in range(len(word_list)):
-                if (count[i] > 0) and i not in save:
-                    print("{}: {}".format(word_list[i].lower(), count[i]))
-        else:
-            count_words(subreddit, word_list, after, count)
+    def print_stats(stats, curr_idx):
+        """Recursively print the stats."""
+        if curr_idx >= len(stats):
+            return
+        k, v = stats[curr_idx]
+        if v > 0:
+            print('{}: {}'.format(k, v))
+        print_stats(stats, curr_idx + 1)
+
+    stats = {}
+    title_list = recurse(subreddit)
+    if not title_list:
+        return
+    get_stats(words_list, 0, title_list, 0, stats)
+    stats = sorted(stats.items(), key=lambda k: (
+        k[1], itemgetter(0)(k)), reverse=True)
+    print_stats(stats, 0)
