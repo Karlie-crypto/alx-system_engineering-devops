@@ -1,6 +1,6 @@
 # ALX SYSTEM ENGINEERING - DEVOPS
 
-![image](https://github.com/Karlie-crypto/alx-system_engineering-devops/assets/110098940/43351db0-941d-4416-8f6e-c325ae8bbed9)
+![image](https://github.com/Karlie-crypto/alx-system_engineering-devops/assets/110098940/96ecb794-593f-432f-8cee-b98a79df8f19)
 
 This repository contains programs created for the _**ALX Software Engineering** Programs._ Your girl here is ready for collaborations, Currently sharpening my knowledge and skills of C and shell scripting. Hey you! Come let's do hard things. The following is a specific list of projects :
 
