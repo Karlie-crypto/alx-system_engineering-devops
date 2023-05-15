@@ -28,6 +28,12 @@ This repository contains programs created for the _**ALX Software Engineering** 
 | 0x13  | [firewall](./0x13-firewall/)               |             |
 | 0x14  | [mysql](./0x14-mysql/)                     |             |
 | 0x15  | [api](./0x15-api/)                         |             |
+| 0x16  | [api](./0x16-api_advanced/)                |             |                  |
+| 0x17  | [web_stack_debugging_#3](./0x17-web_stack_debugging_3/)  |                  |
+| 0x18  | [webstack_monitoring](./0x18-webstack_monitoring/)       |                  |
+| 0x19  | [postmortem](./0x19-postmortem/)                         |                  |
+| 0x1A  | [application_server](./0x1A-application_server/)         |                  |
+| 0x1B  | [web_stack_debugging_#4](./0x1B-web_stack_debugging_4/)  |                  |
 | N/A   | [0-iam_betty](./0-iam_betty/)              |             |
 | N/A   | [Command line for the win](./command_line_for_the_win)                                                                                                    |              
 | N/A   | [Attack is the best defense](./attack_is_the_best_defense/)|                                                                                              |             |
