@@ -1,0 +1,25 @@
+# Nginx configuration for flask application
+
+
+server {                                                                        
+        listen 80 default_server;                                               
+        listen [::]:80 default_server;                                          
+                                                                                
+        root /var/www/html;                                                     
+        index index.html index.htm index.nginx-debian.html;                     
+        server_name _;                                                          
+                                                                                
+        location / {                                                            
+                try_files $uri $uri/ =404;                                      
+        }                                                                       
+                                                                                
+        # 2. Add a route with query parameters                                  
+        location /airbnb-onepage/ {                                             
+                proxy_pass http://localhost:5000;                               
+        }                                                                       
+                                                                                
+        # 3. Add a route with query parameters                                  
+        location /airbnb-dynamic/number_odd_or_even/ {                          
+                proxy_pass http://localhost:5001/number_odd_or_even/;           
+        }                                                                       
+} 
