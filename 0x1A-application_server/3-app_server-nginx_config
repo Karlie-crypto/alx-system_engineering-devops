@@ -1,25 +1,28 @@
-# Nginx configuration for flask application
+#  configure Nginx to serve your page from the route /airbnb-onepage/
 
+server {
+         listen 80 default_server;
+         listen [::]:80 default_server;
 
-server {                                                                        
-        listen 80 default_server;                                               
-        listen [::]:80 default_server;                                          
-                                                                                
-        root /var/www/html;                                                     
-        index index.html index.htm index.nginx-debian.html;                     
-        server_name _;                                                          
-                                                                                
-        location / {                                                            
-                try_files $uri $uri/ =404;                                      
-        }                                                                       
-                                                                                
-        # 2. Add a route with query parameters                                  
-        location /airbnb-onepage/ {                                             
-                proxy_pass http://localhost:5000;                               
-        }                                                                       
-                                                                                
-        # 3. Add a route with query parameters                                  
-        location /airbnb-dynamic/number_odd_or_even/ {                          
-                proxy_pass http://localhost:5001/number_odd_or_even/;           
-        }                                                                       
-} 
+         root /var/www/html;
+         index index.html index.htm index.nginx-debian.html;
+
+         server_name _;
+         add_header X-Served-By 109126-web-01;
+
+         location / {
+                 add_header X-Served-By 109126-web-01;
+         }
+
+         location /hbnb_static {
+                 alias /data/web_static/current;
+         }
+
+         location /airbnb-onepage/ {
+                 proxy_pass http://localhost:5000;
+         }
+
+         location /airbnb-dynamic/number_odd_or_even/ {
+                 proxy_pass http://localhost:5001/number_odd_or_even/;
+         }
+}
